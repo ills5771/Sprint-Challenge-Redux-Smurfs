@@ -10,17 +10,45 @@ import "./App.css";
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  state = {
+    name: "",
+    age: "",
+    height: ""
+  };
+
   componentDidMount() {
     this.props.getSmurfs();
   }
+
+  handleChanges = ev => {
+    this.setState({
+      [ev.target.name]: ev.target.value
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <form>
-          <input />
-          <input />
-          <input />
+          <input
+            name="name"
+            value={this.state.name}
+            placeholder="name"
+            onChange={this.handleChanges}
+          />
+          <input
+            name="age"
+            value={this.state.age}
+            placeholder="age"
+            onChange={this.handleChanges}
+          />
+          <input
+            name="height"
+            value={this.state.height}
+            placeholder="height"
+            onChange={this.handleChanges}
+          />
           <button>Add Smurf</button>
         </form>
 
