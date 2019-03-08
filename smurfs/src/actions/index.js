@@ -14,7 +14,7 @@ import axios from "axios";
    D - deleteSmurf
 */
 export const GETTING_SMURFS = "GETTING_SMURFS";
-export const GET_SMURFS = "ADD_SMURF";
+export const GET_SMURFS = "GET_SMURF";
 
 export const getSmurfs = () => dispatch => {
   dispatch({ type: GETTING_SMURFS });

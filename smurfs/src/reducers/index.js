@@ -1,7 +1,6 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import React from "react";
 
 import { GET_SMURFS, GETTING_SMURFS } from "../actions";
 /*
@@ -22,7 +21,7 @@ const initialState = {
   getSmurfs: false,
   error: null
 };
-const reducer = (initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GETTING_SMURFS:
       return {
