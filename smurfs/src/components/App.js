@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSmurfs } from "../actions";
+
 import "./App.css";
 /*
  to wire this component up you're going to need a few things.
@@ -16,9 +17,22 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <form>
+          <input />
+          <input />
+          <input />
+          <button>Add Smurf</button>
+        </form>
+
+        {this.props.smurfs.map(smurf => (
+          <div style={{ border: "1px solid gray", width: "200px" }}>
+            <p>{smurf.name}</p>
+            <p>{smurf.age}</p>
+            <p>{smurf.height}</p>
+            <button>Delete</button>
+            <button>Update</button>
+          </div>
+        ))}
       </div>
     );
   }
