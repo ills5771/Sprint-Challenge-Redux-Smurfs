@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSmurfs } from "../actions";
+import { getSmurfs, addSmurf } from "../actions";
 
 import "./App.css";
 /*
@@ -25,12 +25,21 @@ class App extends Component {
       [ev.target.name]: ev.target.value
     });
   };
+  addSmurf = ev => {
+    const newSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    };
+    ev.preventDefault();
+    this.props.addSmurf(newSmurf);
+  };
 
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <form>
+        <form onSubmit={this.addSmurf}>
           <input
             name="name"
             value={this.state.name}
@@ -69,13 +78,15 @@ function mapStateToProps(state) {
   console.log(state);
   return {
     smurfs: state.smurfs,
-    getSmurfs: state.getSmurfs
+    getSmurfs: state.getSmurfs,
+    addSmurf: state.addSmurf
   };
 }
 
 export default connect(
   mapStateToProps,
   {
-    getSmurfs
+    getSmurfs,
+    addSmurf
   }
 )(App);

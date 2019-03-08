@@ -36,7 +36,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         addSmurf: true,
-        error: null,
         smurfs: action.payload
       };
     default:
